@@ -1,6 +1,15 @@
-def locate_card (cards, query):
+from jovian.pythondsa import evaluate_test_cases
 
-    pass
+
+def locate_card_BF (cards, query):
+    
+    for i in range(len(cards)): #percorrer toda a lista de maneira linear
+        if cards[i] == query: #caso algum elemento da lista seja igual ao query
+            return i # retornar a posição do elemento encontrado
+    
+    return -1
+
+    
 
 tests = []
 
@@ -12,7 +21,6 @@ tests.append({
     },
     'output': 3
 })
-
 tests.append({
     'input': {
         'cards': [13, 11, 10, 7, 4, 3, 1, 0],
@@ -84,12 +92,10 @@ tests.append({
     'output': 2
 })
 
-print(tests)
+evaluate_test_cases(locate_card_BF, tests)
 
 
-"""if locate_card (**test['input']) == test['output']:
-    print(True)
-else: 
-    print(False)"""
+
+
 
 
