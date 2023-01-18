@@ -10,7 +10,7 @@ def locate_card_BF (cards, query):
     return -1
 
 
-def locate_card_binary(cards, query):
+def locate_card_binary_jovian(cards, query):
     lo, hi = 0, len(cards) - 1
     
     while lo <= hi:
@@ -28,7 +28,26 @@ def locate_card_binary(cards, query):
     
     return -1
 
+def locate_card_binary_mine(cards, query):
     
+    init = 0
+    last = len(cards) - 1
+    mid = last // 2
+    
+    
+    while init <= last:
+        if cards[mid] == query:
+            return mid
+        elif cards[mid] < query:
+            last = mid - 1
+            mid = (init + last) // 2
+        else:
+            init = mid + 1
+            mid = (init + last) // 2
+
+    
+    return -1
+
 
 tests = []
 
@@ -111,9 +130,11 @@ tests.append({
     'output': 2
 })
 
-evaluate_test_cases(locate_card_BF, tests)
+#evaluate_test_cases(locate_card_BF, tests)
 
-evaluate_test_cases(locate_card_binary, tests)
+#evaluate_test_cases(locate_card_binary_jovian, tests)
+
+evaluate_test_cases(locate_card_binary_mine, tests)
 
 
 
